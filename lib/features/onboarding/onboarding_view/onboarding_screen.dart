@@ -1,7 +1,9 @@
 import 'package:fitness_app/core/constants/app_texts.dart';
+import 'package:fitness_app/core/database/cache/cache_helper.dart';
 import 'package:fitness_app/core/gen/assets.gen.dart';
+import 'package:fitness_app/core/routes/page_route_names.dart';
+import 'package:fitness_app/core/shared_widgets/custom_elevated_button.dart';
 import 'package:fitness_app/core/themes/color_palette.dart';
-import 'package:fitness_app/features/shared_widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import '';
 
@@ -40,7 +42,10 @@ class OnboardingScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 20),
-                CustomElevatedButton(buttonText: "GetStarted"),
+                CustomElevatedButton(buttonText: "GetStarted",onPressed: (){
+                  CacheHelper().saveData(key: "isOnboardingVisited", value: true);
+                  Navigator.pushReplacementNamed(context, PageRouteNames.signIn);
+                },),
                 SizedBox(height: 25),
               ],
             ),
