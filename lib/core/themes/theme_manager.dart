@@ -16,7 +16,14 @@ abstract class ThemeManager {
           fontSize: 32,
           fontFamily: "Lexend",
           color: ColorPalette.mainTextColor
-        )
+        ),
+      bodySmall: TextStyle(
+        fontWeight: FontWeight.w400,
+        fontSize: 12,
+        fontFamily: "Lexend",
+        color: ColorPalette.secondTextColor
+      )
+
     )
     );
   }

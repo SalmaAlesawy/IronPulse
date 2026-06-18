@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'IronPulse',
       theme: ThemeManager.getTheme(),
       initialRoute: PageRouteNames.splashScreen,
       onGenerateRoute: AppRouter.onGenerateRoute,

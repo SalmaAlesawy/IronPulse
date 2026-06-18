@@ -7,7 +7,6 @@ import 'package:fitness_app/core/themes/color_palette.dart';
 import 'package:flutter/material.dart';
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;

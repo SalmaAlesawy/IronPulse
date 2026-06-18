@@ -59,6 +59,9 @@ class $AssetsIconsGen {
   SvgGenImage get inactiveTrainersIcon =>
       const SvgGenImage('assets/icons/inactive_trainers_icon.svg');
 
+  /// File path: assets/icons/logo_icon.svg
+  SvgGenImage get logoIcon => const SvgGenImage('assets/icons/logo_icon.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
     activeFavouriteIcon,
@@ -69,6 +72,7 @@ class $AssetsIconsGen {
     inactivePlansIcon,
     inactiveProfileIcon4,
     inactiveTrainersIcon,
+    logoIcon,
   ];
 }
 
