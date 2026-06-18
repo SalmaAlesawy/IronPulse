@@ -17,7 +17,7 @@ class _SplashViewState extends State<SplashView> {
    bool isOnboardingVisited= CacheHelper().getData(key: "isOnboardingVisited")??false;
    if(isOnboardingVisited==true){
      Future.delayed(Duration(seconds: 2), () {
-       Navigator.pushReplacementNamed(context, PageRouteNames.signIn);
+       Navigator.pushReplacementNamed(context, PageRouteNames.layout);
      });
    }else{
      Future.delayed(Duration(seconds: 2), () {
