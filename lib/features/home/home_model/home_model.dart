@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HomeModel {
+  
   String image;
   String level;
   String title;
