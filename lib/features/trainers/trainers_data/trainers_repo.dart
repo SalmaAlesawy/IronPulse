@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
-import 'package:fitness_app/core/network/api_consumer.dart';
 import 'package:fitness_app/core/network/api_endpoints.dart';
+import 'package:fitness_app/core/network/dio_consumer.dart';
 import 'package:fitness_app/features/trainers/trainers_model/trainers_model.dart';
 
 class TrainersRepo {
-  final ApiConsumer apiConsumer;
+  final DioConsumer dioConsumer;
 
-  TrainersRepo({required this.apiConsumer});
+  TrainersRepo({required this.dioConsumer});
   Future<Either<String, List<TrainersModel>>> getTrainers() async {
     try {
-      final response = await apiConsumer.get(ApiEndpoints.getTrainers);
+      final response = await dioConsumer.get(ApiEndpoints.getTrainers);
       final List data = response is List
           ? response
           : response['trainers'] ?? [];

@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:fitness_app/core/errors/error_model.dart';
 import 'package:fitness_app/core/errors/handle_exceptions.dart';
 import 'package:fitness_app/core/network/api_consumer.dart';
 import 'package:fitness_app/core/network/api_endpoints.dart';
@@ -23,12 +22,12 @@ class DioConsumer extends ApiConsumer {
     String path, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
-    bool isFromData = false,
+    bool isFormData = false,
   }) async {
     try {
       final response = await dio.delete(
         path,
-        data: isFromData ? FormData.fromMap(data) : data,
+        data: isFormData ? FormData.fromMap(data) : data,
         queryParameters: queryParameters,
       );
       return response.data;
@@ -60,12 +59,12 @@ class DioConsumer extends ApiConsumer {
     String path, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
-    bool isFromData = false,
+    bool isFormData = false,
   }) async {
     try {
       final response = await dio.patch(
         path,
-        data: isFromData ? FormData.fromMap(data) : data,
+        data: isFormData ? FormData.fromMap(data) : data,
         queryParameters: queryParameters,
       );
       return response.data;
@@ -79,12 +78,12 @@ class DioConsumer extends ApiConsumer {
     String path, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
-    bool isFromData = false,
+    bool isFormData = false,
   }) async {
     try {
       final response = await dio.post(
         path,
-        data: isFromData ? FormData.fromMap(data) : data,
+        data: isFormData ? FormData.fromMap(data) : data,
         queryParameters: queryParameters,
       );
       return response.data;
@@ -94,12 +93,7 @@ class DioConsumer extends ApiConsumer {
       print("HEADERS: ${e.response?.headers}");
       print("${dio.options.baseUrl}$path");
 
-      throw ServerException(
-        errModel: ErrorModel(
-          errorMessage: e.response?.data.toString() ?? 'Unknown error',
-          status: e.response?.statusCode ?? 500,
-        ),
-      );
+      handleDioExceptions(e);
     }
   }
 }

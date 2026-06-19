@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:fitness_app/core/gen/assets.gen.dart';
 import 'package:fitness_app/core/network/dio_consumer.dart';
 import 'package:fitness_app/core/shared_widgets/CustomTextFormField.dart';
 import 'package:fitness_app/core/themes/color_palette.dart';
@@ -16,7 +15,7 @@ class TrainersView extends StatefulWidget {
 class _TrainersViewState extends State<TrainersView> {
   @override
   void initState() {
-    final repo = TrainersRepo(apiConsumer: DioConsumer(Dio()));
+    final repo = TrainersRepo(dioConsumer: DioConsumer(Dio()));
 
     repo.getTrainers().then((result) {
       result.fold(
