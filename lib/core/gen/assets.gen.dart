@@ -83,12 +83,30 @@ class $AssetsImagesGen {
   AssetGenImage get splashScreen =>
       const AssetGenImage('assets/images/Splash Screen.png');
 
+  /// File path: assets/images/advanced_image.png
+  AssetGenImage get advancedImage =>
+      const AssetGenImage('assets/images/advanced_image.png');
+
+  /// File path: assets/images/beginer_image.png
+  AssetGenImage get beginerImage =>
+      const AssetGenImage('assets/images/beginer_image.png');
+
   /// File path: assets/images/hero_image_section.png
   AssetGenImage get heroImageSection =>
       const AssetGenImage('assets/images/hero_image_section.png');
 
+  /// File path: assets/images/intermedaite_image.png
+  AssetGenImage get intermedaiteImage =>
+      const AssetGenImage('assets/images/intermedaite_image.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [splashScreen, heroImageSection];
+  List<AssetGenImage> get values => [
+    splashScreen,
+    advancedImage,
+    beginerImage,
+    heroImageSection,
+    intermedaiteImage,
+  ];
 }
 
 class Assets {

@@ -4,7 +4,10 @@ import 'package:fitness_app/core/shared_widgets/CustomTextFormField.dart';
 import 'package:fitness_app/core/themes/color_palette.dart';
 import 'package:fitness_app/features/home/home_data/home_data.dart';
 import 'package:fitness_app/core/shared_widgets/plans_item_card.dart';
+import 'package:fitness_app/features/home/home_view_model/search_cubit/search_cubit.dart';
+import 'package:fitness_app/features/plans/plans_view_model/plans_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -12,6 +15,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController searchController = TextEditingController();
     TextTheme textTheme = Theme.of(context).textTheme;
+    SearchCubit searchCubit=context.read<SearchCubit>();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -36,6 +40,7 @@ class HomeView extends StatelessWidget {
           child: Column(
             children: [
               Customtextformfield(
+                onChanged: searchCubit.searchMethod,
                 prefixIcon: Icon(
                   Icons.search,
                   color: ColorPalette.inputTextColor,
@@ -52,7 +57,26 @@ class HomeView extends StatelessWidget {
               ),
               Column(
                 children: List.generate(3, (index) {
-                  return PlansItemCard(homeModel: HomeData.homeData[index]);
+
+                  return BlocBuilder<PlansCubit, PlansState>(
+                    builder: (context, state) {
+
+                      switch (state) {
+                        case PlansInitial():
+                          return CircularProgressIndicator();
+                        case LoadingPlansState():
+                          return CircularProgressIndicator();
+                        case SuccessPlansState():
+                          return PlansItemCard(
+                            homeModel: HomeData.homeData[index],
+                            plansModel: state.plans[index],
+                            index: index,
+                          );
+                        case ErrorPlansState():
+                          return Text("error");
+                      }
+                    },
+                  );
                 }),
               ),
             ],

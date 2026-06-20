@@ -1,7 +1,7 @@
 import 'package:fitness_app/core/themes/color_palette.dart';
 import 'package:flutter/material.dart';
 
-class Customtextformfield extends StatefulWidget {
+class Customtextformfield extends StatelessWidget {
   final Widget prefixIcon;
   final TextEditingController controller;
   final String? Function(String?)? validator;
@@ -9,6 +9,7 @@ class Customtextformfield extends StatefulWidget {
   final Widget? suffixIcon;
   final TextInputType? keyboardType;
   final bool? obscureText;
+  final  void Function(String)? onChanged;
   const Customtextformfield({
     super.key,
     required this.prefixIcon,
@@ -18,35 +19,32 @@ class Customtextformfield extends StatefulWidget {
     this.suffixIcon,
     this.keyboardType,
     this.obscureText=false,
+    this.onChanged,
   });
 
-  @override
-  State<Customtextformfield> createState() => _CustomtextformfieldState();
-}
-
-class _CustomtextformfieldState extends State<Customtextformfield> {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
     return TextFormField(
-      obscureText:widget.obscureText! ,
-      keyboardType: widget.keyboardType,
-      validator: widget.validator,
-      controller: widget.controller,
+      onChanged: onChanged,
+      obscureText:obscureText! ,
+      keyboardType: keyboardType,
+      validator: validator,
+      controller: controller,
       style: textTheme.titleLarge,
       decoration: InputDecoration(
-        hintText: widget.hintText,
+        hintText: hintText,
         hintStyle: textTheme.titleMedium?.copyWith(
           color: ColorPalette.inputTextColor,
           fontWeight: FontWeight.w400,
         ),
         suffixIcon: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: widget.suffixIcon,
+          child: suffixIcon,
         ),
         prefixIcon: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: widget.prefixIcon,
+          child: prefixIcon,
         ),
         filled: true,
         fillColor: ColorPalette.inputColor,
