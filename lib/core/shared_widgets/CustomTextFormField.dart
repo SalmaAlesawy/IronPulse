@@ -1,7 +1,7 @@
 import 'package:fitness_app/core/themes/color_palette.dart';
 import 'package:flutter/material.dart';
 
-class Customtextformfield extends StatefulWidget {
+class CustomTextFormField extends StatefulWidget {
   final Widget prefixIcon;
   final TextEditingController controller;
   final String? Function(String?)? validator;
@@ -9,7 +9,7 @@ class Customtextformfield extends StatefulWidget {
   final Widget? suffixIcon;
   final TextInputType? keyboardType;
   final bool? obscureText;
-  const Customtextformfield({
+  const CustomTextFormField({
     super.key,
     required this.prefixIcon,
     required this.controller,
@@ -17,19 +17,19 @@ class Customtextformfield extends StatefulWidget {
     required this.hintText,
     this.suffixIcon,
     this.keyboardType,
-    this.obscureText=false,
+    this.obscureText = false,
   });
 
   @override
-  State<Customtextformfield> createState() => _CustomtextformfieldState();
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
 }
 
-class _CustomtextformfieldState extends State<Customtextformfield> {
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
     return TextFormField(
-      obscureText:widget.obscureText! ,
+      obscureText: widget.obscureText ?? false,
       keyboardType: widget.keyboardType,
       validator: widget.validator,
       controller: widget.controller,

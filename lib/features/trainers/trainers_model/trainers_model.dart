@@ -10,6 +10,7 @@ class TrainersModel {
     required this.image,
     required this.name,
     required this.specialty,
+    
     required this.experienceYears,
     required this.rating,
     this.clients = 0,

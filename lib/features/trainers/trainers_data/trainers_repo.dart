@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:fitness_app/core/network/api_endpoints.dart';
 import 'package:fitness_app/core/network/dio_consumer.dart';
 import 'package:fitness_app/features/trainers/trainers_model/trainers_model.dart';
+import 'package:flutter/foundation.dart';
 
 class TrainersRepo {
   final DioConsumer dioConsumer;
@@ -20,7 +21,10 @@ class TrainersRepo {
       print('Trainers: $trainers');
 
       return Right(trainers);
-    } catch (e) {
+    } catch (e, stackTrace) {
+      debugPrint('TrainersRepo error: $e');
+      debugPrintStack(stackTrace: stackTrace);
+
       return Left(e.toString());
     }
   }

@@ -19,6 +19,7 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
+    final imagePath = image;
     return ElevatedButton(
       style: ButtonStyle(
         shadowColor: const WidgetStatePropertyAll(Colors.transparent),
@@ -34,12 +35,12 @@ class CustomElevatedButton extends StatelessWidget {
         ),
       ),
       onPressed: onPressed,
-      child: image == null
+      child: imagePath == null
           ? Text(buttonText, style: textTheme.titleLarge)
           : Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(image!, width: 24, height: 24),
+                Image.asset(imagePath, width: 24, height: 24),
                 const SizedBox(width: 10),
                 Text(buttonText),
               ],

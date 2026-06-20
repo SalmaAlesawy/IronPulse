@@ -3,7 +3,7 @@ import 'package:fitness_app/core/shared_widgets/CustomTextButton.dart';
 import 'package:fitness_app/core/shared_widgets/CustomTextFormField.dart';
 import 'package:fitness_app/core/themes/color_palette.dart';
 import 'package:fitness_app/features/home/home_data/home_data.dart';
-import 'package:fitness_app/core/shared_widgets/plans_item_card.dart';
+import 'package:fitness_app/features/home/home_view/widgets/plans_item_card.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -35,7 +35,7 @@ class HomeView extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Customtextformfield(
+              CustomTextFormField(
                 prefixIcon: Icon(
                   Icons.search,
                   color: ColorPalette.inputTextColor,
